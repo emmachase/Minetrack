@@ -4,7 +4,12 @@ const ServerRegistration = require('./lib/servers')
 const logger = require('./lib/logger')
 
 const config = require('./config')
-const servers = require('./servers')
+
+const fs = require('fs')
+
+// Get servers location from environment variable
+const serversLocation = process.env.SERVERS_LOCATION || './servers.json'
+const servers = JSON.parse(fs.readFileSync(serversLocation, 'utf8'))
 
 const app = new App()
 
