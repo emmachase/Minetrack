@@ -1,9 +1,10 @@
-const App = require('./lib/app')
+// const App = require('./lib/app')
 const ServerRegistration = require('./lib/servers')
 
 const logger = require('./lib/logger')
 
-const config = require('./config')
+// const config = require('./config')
+const config = require('./lib/config')
 
 const fs = require('fs')
 
@@ -11,7 +12,8 @@ const fs = require('fs')
 const serversLocation = process.env.SERVERS_LOCATION || './servers.json'
 const servers = JSON.parse(fs.readFileSync(serversLocation, 'utf8'))
 
-const app = new App()
+// const app = new App()
+const app = require('./lib/appinstance')()
 
 servers.forEach((server, serverId) => {
   // Assign a generated color for each servers.json entry if not manually defined

@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:20-slim
 
 ARG TINI_VER="v0.19.0"
 
@@ -18,7 +18,7 @@ WORKDIR /usr/src/minetrack
 COPY . .
 
 # build minetrack
-RUN npm install --build-from-source \
+RUN npm install \
  && npm run build
 
 # run as non root
